@@ -1,6 +1,7 @@
 body {
     width: 100%;
     font-family: 'Chango', cursive;
+    cursor: url('../images/tortilla-chips2.png'), default;
 
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b4df5b+0,b4df5b+100;Green+Semi+Flat */
 background: #b4df5b; /* Old browsers */
@@ -10,35 +11,33 @@ background: linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%); /* W3C, IE10+, 
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4df5b', endColorstr='#b4df5b',GradientType=0 ); /* IE6-9 */
 }
 
-
-.wrapper1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.wrapper2 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.btn-circle.btn-xl {
-    width: 100px;
-    height: 100px;
-    padding: 10px 16px;
-    font-size: 24px;
-    line-height: 1.33;
-    border-radius: 50%;
-    margin: 5px;
-    outline: none !important;
-}
-
 h1 {
     text-align: center;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
-.col-xs-12 {
+.col-xs-12, .col-xs-4 {
     text-align: center;
+}
+
+.mole {
+  /*background-color: red !important;*/
+  background-image: url('../images/guacamole.png');
+  background-size: contain;
+}
+
+#game-board {
+  height: 330px;
+  width: 330px;
+  margin: 0 auto;
+}
+
+.cell {
+  display: inline-block;
+  width: 21%;
+  margin: 4px;
+  height: 21%;
+  border: 1px solid black;
+  background-color: lightblue;
+  display: none;
 }
