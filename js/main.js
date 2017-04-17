@@ -1,85 +1,92 @@
 function Game() {
   this.baseUrl = "./sounds/";
   this.audio = ["eat_chips.m4a", "incorrect.mp3"];
-  this.gameScore = 0;
+  this.score = 0;
+  this.prevScore = 0;
   this.level = 1;
   this.lives = 5;
   this.playing = false;
 };
 
-Game.prototype.sequentialFadeIn = function (selectorText, speed, display, callback) {
-    display = typeof display !== 'undefined' ? display : "block";
+var scoreDisplay = document.getElementById("score-display");
+var cells = document.querySelectorAll(".cell");
 
-    var els = $(selectorText),
-        i = 0;
-
-    (function helper() {
-        els.eq(i++).fadeIn(speed, helper).css("display", display);
-        if (callback && i === els.length) {callback();}
-    })();
+// OK
+Game.prototype.displayScore = function () {
+  var that = this;
+    this.levelUp();
+    scoreDisplay.innerHTML = "Score: " + that.score + "<span id='level-display'> Level: " + that.level + "</span><span id='lifes-display'> Lives: " + that.lives + "</span>";
 }
-
-Game.prototype.addMoleToRandomHole = function () {
-  var that = this;
-  var moleTile = $('#' + Math.floor(Math.random() * 16 + 1));
-  moleTile.addClass('mole');
-
-  setTimeout(function(){
-    moleTile.removeClass('mole');
-    // that.gameScore-- does not work here.. I get he window object
-    // this.updateStats()  does not work...
-  }, Math.floor(Math.random() * 2000 + 1000));
-};
-
-Game.prototype.clickOnHole = function () {
-  var that = this;
-  this.gameOver();
-  $('.cell').click(function() {
-    if (!($(this).hasClass('mole'))) {
-      new Audio(that.baseUrl + that.audio[1]).play();
-      that.lives--
-      that.updateStats();
-    } else {
-      $(this).removeClass('mole');
-      that.gameScore++
-      that.updateStats();
-      new Audio(that.baseUrl + that.audio[0]).play();
-    }
-  });
-};
 
 Game.prototype.levelUp = function () {
-  this.level = Math.max(Math.floor(score / 10), 1);
-}
+  this.level = Math.max(Math.floor((this.score+10) / 10), 1);
+};
+
+Game.prototype.randomCell = function () {
+    return Math.floor(Math.random() * 16);
+};
 
 Game.prototype.gameOver = function () {
-  if (lives === 0) {
-    clearInterval(getCells);
+  var that = this;
+  if (this.lives === 0) {
+    clearInterval(that.getCells);
     this.score = 0;
     this.level = 1;
     this.lives = 5;
     this.playing = false;
+    $('#start').show();
   }
-}
-
-Game.prototype.startGame = function () {
-  var that = this;
-  setInterval(that.addMoleToRandomHole, Math.floor(Math.random()*3000 + 1000));
 };
 
-Game.prototype.updateStats = function () {
-  //this.levelUp()
-  $('#total').text(this.hits + this.misses);
-  $('#gameScore').text(this.gameScore);
-  $('#level').text(this.level);
-  $('#lives').text(this.lives);
+Game.prototype.highlightCell = function() {
+  var that = this;
+  var target = this.randomCell();
+  this.prevScore = this.score;
+  var moles = $('#' + Math.floor(Math.random() * 16 + 1));
+  moles.addClass('mole');
+  setTimeout(function() {
+    moles.removeClass('mole');
+    if (that.score === that.prevScore) {
+      that.lives--;
+      that.displayScore();
+      that.gameOver();
+    }
+  }, 1000)
+};
+
+Game.prototype.startGame = function () {
+  var that = this;  
+  $('#start').click(function() {
+    if (!(that.playing)) {
+      that.playing = true;
+      that.displayScore();
+      $(this).hide();
+      that.getCells = setInterval(function() {
+        that.highlightCell();
+      }, 2000);
+    }
+  });
+};
+
+Game.prototype.checkClicks = function () {
+  var that = this;
+  $('.cell').click(function() {
+    if ($(this).hasClass('mole')) {
+      new Audio(that.baseUrl + that.audio[0]).play();
+      that.score++
+      that.displayScore();
+    } else {
+      new Audio(that.baseUrl + that.audio[1]).play();
+      that.lives--;
+      that.displayScore();
+      that.gameOver();
+    }
+  })
 };
 
 $(document).ready(function () {
   var moleGame = new Game();
-  moleGame.sequentialFadeIn(".toBeFaddedIn", "fast", "inline-block", function() {
+
     moleGame.startGame();
-    moleGame.clickOnHole();
-    console.log("I am just a callback");
+    moleGame.checkClicks();
 });
-});  

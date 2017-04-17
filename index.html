@@ -12,46 +12,31 @@
 
 <body>
 <h1>Guac-a-mole game</h1>
+<div id="game-info">
+  <p id="score-display"></p>
+</div>
+  
 <div id="game-board">
-  <div class="cell toBeFaddedIn" id="1"></div>
-  <div class="cell toBeFaddedIn" id="2"></div>
-  <div class="cell toBeFaddedIn" id="3"></div>
-  <div class="cell toBeFaddedIn" id="4"></div>
-  <div class="cell toBeFaddedIn" id="5"></div>
-  <div class="cell toBeFaddedIn" id="6"></div>
-  <div class="cell toBeFaddedIn" id="7"></div>
-  <div class="cell toBeFaddedIn" id="8"></div>
-  <div class="cell toBeFaddedIn" id="9"></div>
-  <div class="cell toBeFaddedIn" id="10"></div>
-  <div class="cell toBeFaddedIn" id="11"></div>
-  <div class="cell toBeFaddedIn" id="12"></div>
-  <div class="cell toBeFaddedIn" id="13"></div>
-  <div class="cell toBeFaddedIn" id="14"></div>
-  <div class="cell toBeFaddedIn" id="15"></div>
-  <div class="cell toBeFaddedIn" id="16"></div>
+  <div class="cell" id="1"></div>
+  <div class="cell" id="2"></div>
+  <div class="cell" id="3"></div>
+  <div class="cell" id="4"></div>
+  <div class="cell" id="5"></div>
+  <div class="cell" id="6"></div>
+  <div class="cell" id="7"></div>
+  <div class="cell" id="8"></div>
+  <div class="cell" id="9"></div>
+  <div class="cell" id="10"></div>
+  <div class="cell" id="11"></div>
+  <div class="cell" id="12"></div>
+  <div class="cell" id="13"></div>
+  <div class="cell" id="14"></div>
+  <div class="cell" id="15"></div>
+  <div class="cell" id="16"></div>
 </div>
 
-<div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-12">
-        <h2>Stats</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-4">
-        Game Score: <span id="gameScore">0</span>
-      </div>
-      <div class="col-xs-4">
-        Level: <span id="level">1</span>
-      </div>
-      <div class="col-xs-4">
-        Lives: <span id="lives">5</span>
-      </div>
-    </div>
-</div>
-
-
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+<button id="start">Start Game</button>
+ <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
   <script src="./js/main.js"></script>
 </body>
