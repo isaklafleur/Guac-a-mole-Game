@@ -2,7 +2,8 @@ function Game() {
   this.baseUrl = "./sounds/";
   this.audio = ["eat_chips.m4a", "incorrect.mp3"];
   this.backgroundSound = "";
-  this.speed = 1000;
+  this.speedRemoveClass = 1000;
+  this.speedHighlight = 2000;
   this.score = 0;
   this.prevScore = 0;
   this.level = 1;
@@ -25,27 +26,26 @@ Game.prototype.levelUp = function () {
     case 2:
     myAudio.playbackRate = 1.3;
     myAudio.play();
-    this.speed = 800;
+    this.speedRemoveClass = 900;
+    this.speedHighlight = 1700;
     break;
     case 3:
     myAudio.playbackRate = 1.6;
     myAudio.play();
-    this.speed = 600;
+    this.speedRemoveClass = 800;
+    this.speedHighlight = 1400;
     break; 
     case 4:
     myAudio.playbackRate = 1.9;
     myAudio.play();
-    this.speed = 400;
+    this.speedRemoveClass = 700;
+    this.speedHighlight = 1100;
     break;
     case 5:
     myAudio.playbackRate = 2.1;
     myAudio.play();
-    this.speed = 200;
-    break;
-    case 6:
-    myAudio.playbackRate = 2.4;
-    myAudio.play();
-    this.speed = 200;
+    this.speedRemoveClass = 600;
+    this.speedHighlight = 800;
     break;
   }
 };
@@ -61,7 +61,6 @@ Game.prototype.gameOver = function () {
     this.score = 0;
     this.level = 1;
     this.lives = 5;
-    this.speed = 2000;
     this.playing = false;
     myAudio.pause();
     myAudio.currentTime = 0;
@@ -75,6 +74,7 @@ Game.prototype.highlightCell = function() {
   this.prevScore = this.score;
   var moles = $('#' + Math.floor(Math.random() * 16 + 1));
   moles.addClass('mole');
+  
   setTimeout(function() {
     moles.removeClass('mole');
     if (that.score === that.prevScore) {
@@ -82,7 +82,7 @@ Game.prototype.highlightCell = function() {
       that.displayScore();
       that.gameOver();
     }
-  }, that.speed)
+  }, that.speedRemoveClass)
 };
 
 Game.prototype.startGame = function () {
@@ -90,13 +90,15 @@ Game.prototype.startGame = function () {
   $('#start').click(function() {
     if (!(that.playing)) {
       that.playing = true;
+      that.speedRemoveClass = 1000;
+      that.speedHighlight = 2000;
       that.displayScore();
       $(this).hide();
       myAudio.playbackRate = 1;
       myAudio.play();
       that.getCells = setInterval(function() {
         that.highlightCell();
-      }, 2000);
+      }, that.speedHighlight);
     }
   });
 };
@@ -107,7 +109,6 @@ Game.prototype.checkClicks = function () {
     if ($(this).hasClass('mole')) {
       new Audio(that.baseUrl + that.audio[0]).play();
       that.score++
-      console.log(that.score);
       that.displayScore()
     } else {
       new Audio(that.baseUrl + that.audio[1]).play();
