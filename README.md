@@ -1,6 +1,6 @@
 <h1 align=center>
   <a href="http://online08.com/guacamole" title="Guac-a-mole Game">
-    <img alt="ChaiJS" src="http://online08.com/guacamole/images/guacamole-whack-a-mole-game.png">
+    <img alt="Guaca-a-mole" src="http://online08.com/guacamole/images/guacamole-whack-a-mole-game.png">
   </a>
   <br>
   Guac-a-mole Game
