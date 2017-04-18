@@ -27,19 +27,19 @@ Game.prototype.levelUp = function () {
     myAudio.playbackRate = 1.3;
     myAudio.play();
     this.speedRemoveClass = 900;
-    this.speedHighlight = 1700;
+    this.speedHighlight = 1600;
     break;
     case 3:
     myAudio.playbackRate = 1.6;
     myAudio.play();
     this.speedRemoveClass = 800;
-    this.speedHighlight = 1400;
+    this.speedHighlight = 1200;
     break; 
     case 4:
     myAudio.playbackRate = 1.9;
     myAudio.play();
     this.speedRemoveClass = 700;
-    this.speedHighlight = 1100;
+    this.speedHighlight = 800;
     break;
     case 5:
     myAudio.playbackRate = 2.1;
