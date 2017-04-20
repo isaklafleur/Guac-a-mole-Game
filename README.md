@@ -7,6 +7,6 @@
 
 ## Demo & Usage
 
-[Gua-ca-mole](http://online08.com/guacamole)
+You can play the game here (works both on mobile and desktop)[Gua-ca-mole](http://online08.com/guacamole)
 
-Need to hit the guacamole icon before times runs out. You have 5 lives to start with. For each 10 points score increase, you bump up one level and speed increase.
+Need to hit the guacamole icon before times runs out. You have 5 lives to start with. For each 10 points score increase you bump up one level and speed increase.
