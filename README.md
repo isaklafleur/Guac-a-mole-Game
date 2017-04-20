@@ -9,5 +9,4 @@
 
 [Gua-ca-mole](http://online08.com/guacamole)
 
-Need to hit hit the guacamole icon before times runs out. You have 5 lives to start with. For each 10 game score you level up and game speed increases.
-
+Need to hit the guacamole icon before times runs out. You have 5 lives to start with. For each 10 points score increase, you bump up one level and speed increase.
