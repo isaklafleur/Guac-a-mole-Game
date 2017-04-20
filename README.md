@@ -1,14 +1,9 @@
 <h1 align=center>
-  <a href="http://online08.com/guacamole" title="Guac-a-mole Game">
-    <img alt="Guaca-a-mole" src="http://online08.com/guacamole/images/guacamole-whack-a-mole-game.png">
-  </a>
+<img alt="Guaca-a-mole" src="https://github.com/isaklafleur/project1-whac-a-mole/blob/master/images/guacamole-whack-a-mole-game.png">
   <br>
-  Guac-a-mole Game
-</h1>
+  Guac-a-mole Game</h1>
 
-<p align=center>
-  A silly whack-a-mole Game
-</p>
+<p align=center>A silly whack-a-mole Game... :-)</p>
 
 ## Demo & Usage
 
