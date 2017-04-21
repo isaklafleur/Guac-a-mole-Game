@@ -117,7 +117,7 @@ Game.prototype.checkClicks = function () {
 };
 
 var myAudio = document.createElement('audio');
-myAudio.setAttribute('src','./sounds/Dr_Jean_-_The_Guacamole_Song.mp3');
+myAudio.setAttribute('src','./sounds/el_jarabe_tapatio.m4a');
 myAudio.loop = true;
 
 
