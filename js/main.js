@@ -1,6 +1,6 @@
 function Game() {
   this.baseUrl = "./sounds/";
-  this.audio = ["eat_chips.m4a", "incorrect.mp3"];
+  this.audio = ["eat_chips.m4a", "incorrect.mp3", "gameover.mp3"];
   this.backgroundSound = "";
   this.speedRemoveClass = 1000;
   this.speedHighlight = 2000;
@@ -58,6 +58,7 @@ Game.prototype.gameOver = function () {
   var that = this;
   if (this.lives === 0) {
     clearInterval(that.getCells);
+    new Audio(that.baseUrl + that.audio[2]).play();
     this.score = 0;
     this.level = 1;
     this.lives = 5;
